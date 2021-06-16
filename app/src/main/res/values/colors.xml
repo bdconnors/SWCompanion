@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Boba Fett Colors-->
+    <color name="fett_green">#18442E</color>
+    <color name="fett_green_light">#53834E</color>
+    <color name="fett_red">#82291B</color>
+    <color name="fett_red_002">#78301D</color>
+    <color name="fett_white">#F7EBCF</color>
+    <color name="fett_brown">#5E3901</color>
+    <color name="fett_brown_002">#734220</color>
+    <color name="fett_yellow">#DEBA2D</color>
+    <color name="fett_orange">#B98C3f</color>
+
+    <!--Dark Mode Colors-->
+    <color name="black">#0A0A0A</color>
+    <color name="dark_gray">#121212</color>
+    <color name="gray">#1E1E1E</color>
+    <color name="light_gray">#878B8E</color>
+    <color name="white">#D4D7D9</color>
+
+</resources>

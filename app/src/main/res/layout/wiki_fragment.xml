@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/wiki_fragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.wiki.WikiHome"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@color/light_gray"
+        app:tabIndicator="@color/white"
+        app:tabBackground="@color/dark_gray"
+    />
+    <androidx.viewpager2.widget.ViewPager2
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingRight="@dimen/margin_tiny"
+        android:paddingLeft="@dimen/margin_tiny"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tab_layout"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

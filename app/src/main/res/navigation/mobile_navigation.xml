@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_wiki">
+    <fragment
+        android:id="@+id/navigation_wiki"
+        android:name="edu.rit.connors.brandon.swcompanion.ui.wiki.WikiHome"
+        android:label="Search"
+        tools:layout="@layout/searchable_list_fragment" />
+</navigation>
