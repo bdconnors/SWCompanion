@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">SW Companion</string>
+    <string name="title_wiki">Wiki</string>
+    <string name="title_news">News</string>
+    <string name="logo_desc">SW Companion Logo</string>
+    <string name="bottom_nav_1">Search</string>
+    <string name="bottom_nav_2">News</string>
+
+    <string-array name="bottom_nav_tabs">
+        <item>Wiki</item>
+        <item>News</item>
+    </string-array>
+
+    <string-array name="search_tabs">
+        <item>Wiki</item>
+        <item>Books</item>
+    </string-array>
+
+    <string-array name="wiki_tabs">
+        <item>Trending</item>
+        <item>Popular</item>
+    </string-array>
+
+    <!--HTTP request headers-->
+    <string name="user_agent">User-Agent</string>
+    <string name="mobile_user_agent">Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0</string>
+
+    <!--Scraping Selectors-->
+    <string name="a_element">a</string>
+    <string name="img_element">img</string>
+    <string name="href_attr">href</string>
+    <string name="src_attr">src</string>
+    <string name="alt_attr">alt</string>
+
+    <!--Wiki URLs-->
+    <string name="wiki_root">https://starwars.fandom.com</string>
+    <string name="wiki_query">https://starwars.fandom.com/wiki/Special:Search?query=%1$s</string>
+    <string name="wiki_main">https://starwars.fandom.com/wiki/Main_Page</string>
+
+    <!--Wiki Search Selectors-->
+    <string name="wiki_page_content">div.WikiaPageContentWrapper</string>
+    <string name="wiki_result">li.unified-search__result</string>
+    <string name="wiki_result_title">article > h1 > a</string>
+    <string name="wiki_result_content">article > div.unified-search__result__content</string>
+    <string name="wiki_result_link">article > div > a[href]</string>
+
+
+    <string name="wiki_result_id">data-page-id</string>
+    <string name="wiki_result_img">data-thumbnail</string>
+    <string name="wiki_result_name">data-title</string>
+    <string name="data_src_attr">data-src</string>
+
+
+    <!--Wiki Trending/Popular Selectors-->
+    <string name="wiki_trending_items">div.mobile-main-page__trending-articles > div.mobile-gallery.mobile-gallery-navigational > div.mobile-gallery__columns > div.mobile-gallery__column > figure.mobile-gallery__image</string>
+    <string name="wiki_popular_items">div.mobile-main-page__popular-categories > div.mobile-gallery.mobile-gallery-navigational > div.mobile-gallery__columns > div.mobile-gallery__column > figure.mobile-gallery__image</string>
+    <string name="wiki_figcaption">figcaption.mobile-gallery__image-caption > span.mobile-gallery__image-caption-content</string>
+
+
+</resources>
