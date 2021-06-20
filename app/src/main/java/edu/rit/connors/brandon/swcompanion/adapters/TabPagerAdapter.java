@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.ui.adapters;
+package edu.rit.connors.brandon.swcompanion.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
 
-public class TabPagerAdapter extends FragmentStateAdapter {
+public abstract class TabPagerAdapter extends FragmentStateAdapter {
 
     public ArrayList<Fragment> tabFragments;
 

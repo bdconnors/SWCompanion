@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.util.parsers;
+package edu.rit.connors.brandon.swcompanion.parsers;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -6,32 +6,17 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.models.PageItem;
+import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
 import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants.*;
 
 
 public class WikiDataSourceParser implements IDataSourceParser {
 
-    private static volatile WikiDataSourceParser instance;
-
-    public WikiDataSourceParser() {
-
-    }
-
-    public static WikiDataSourceParser getInstance() {
-
-        if (instance == null) {
-            synchronized (WikiDataSourceParser.class) {
-                if (instance == null)
-                    instance = new WikiDataSourceParser();
-            }
-        }
-        return instance;
-    }
+    public WikiDataSourceParser() { }
 
     @Override
-    public PageItem parse(Element element, DataPage dataPage) {
-        PageItem item = new PageItem();
+    public NetworkItem parse(Element element, DataPage dataPage) {
+        NetworkItem item = new NetworkItem();
 
         switch (dataPage){
             case WIKI_SEARCH:
@@ -47,8 +32,8 @@ public class WikiDataSourceParser implements IDataSourceParser {
     }
 
     @Override
-    public ArrayList<PageItem> parse(Document doc, DataPage dataPage) {
-        ArrayList<PageItem> items = new ArrayList<>();
+    public ArrayList<NetworkItem> parse(Document doc, DataPage dataPage) {
+        ArrayList<NetworkItem> items = new ArrayList<>();
         String selector = null;
 
         switch(dataPage){
@@ -65,7 +50,7 @@ public class WikiDataSourceParser implements IDataSourceParser {
 
         Elements elements = doc.select(selector);
 
-        PageItem item;
+        NetworkItem item;
         for(int i = 0; i < elements.size(); i++){
             item = parse(elements.get(i), dataPage);
             item.setId(String.valueOf(i));
@@ -75,7 +60,7 @@ public class WikiDataSourceParser implements IDataSourceParser {
         return items;
     }
 
-    private PageItem parseTrendingPopular(Element element){
+    private NetworkItem parseTrendingPopular(Element element){
 
         Element root = element.selectFirst(Html.Element.A);
         Element img = element.selectFirst(Html.Element.IMG);
@@ -86,10 +71,10 @@ public class WikiDataSourceParser implements IDataSourceParser {
         String imgURL = img.attr(Html.Attr.Wiki.DATA_SRC);
         String title = caption.text();
 
-        return new PageItem(title, imgURL, pageURL);
+        return new NetworkItem(title, imgURL, pageURL);
     }
 
-    private PageItem parseSearch(Element element){
+    private NetworkItem parseSearch(Element element){
 
         Element titleElement = element.selectFirst(CssQuery.Wiki.SearchResult.TITLE);
 
@@ -97,6 +82,6 @@ public class WikiDataSourceParser implements IDataSourceParser {
         String titleText = titleElement.attr(Html.Attr.Wiki.DATA_TITLE);
         String pageURL = element.selectFirst(CssQuery.Wiki.SearchResult.LINK).attr(Html.Attr.HREF);
 
-        return new PageItem(titleText, imgURL, pageURL);
+        return new NetworkItem(titleText, imgURL, pageURL);
     }
 }

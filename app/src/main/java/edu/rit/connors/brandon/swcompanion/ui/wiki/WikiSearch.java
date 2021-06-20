@@ -9,24 +9,27 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.models.PageItem;
-import edu.rit.connors.brandon.swcompanion.ui.lists.RecyclerList;
-import edu.rit.connors.brandon.swcompanion.ui.lists.SearchViewList;
+import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
+import edu.rit.connors.brandon.swcompanion.fragments.SearchViewListFragment;
 import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants;
-import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants.DataPage;
 import edu.rit.connors.brandon.swcompanion.util.HttpRequestClient;
-import edu.rit.connors.brandon.swcompanion.util.parsers.WikiDataSourceParser;
+import edu.rit.connors.brandon.swcompanion.parsers.IDataSourceParser;
+import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants.DataPage;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class WikiSearch extends SearchViewList implements Callback {
+public class WikiSearch extends SearchViewListFragment implements Callback {
 
+
+    public WikiSearch(IDataSourceParser parser) {
+        super(parser);
+    }
 
     @Override
     public void onFailure(@NotNull Call call, @NotNull IOException e) {
         getActivity().runOnUiThread(() -> {
-            refreshLayout.setRefreshing(false);
+            hideSpinner();
             Toast.makeText(getContext(),"Error Fetching Data",Toast.LENGTH_LONG).show();
         });
     }
@@ -36,17 +39,16 @@ public class WikiSearch extends SearchViewList implements Callback {
 
         final String data = response.body().string();
         Document doc = Jsoup.parse(data);
-        ArrayList<PageItem> items = WikiDataSourceParser
-                .getInstance().parse(doc, DataPage.WIKI_SEARCH);
+        ArrayList<NetworkItem> items = parser.parse(doc, DataPage.WIKI_SEARCH);
         getActivity().runOnUiThread(() -> {
-            refreshLayout.setRefreshing(false);
+            hideSpinner();
             adapter.setItems(items);
         });
     }
 
     @Override
     public void submitSearch() {
-        refreshLayout.setRefreshing(true);
+        super.submitSearch();
         String url = DataSourceConstants.Url.Wiki.getQueryURL(getQueryText());
         HttpRequestClient.getInstance(getContext()).request(url, this);
     }

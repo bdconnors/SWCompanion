@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.ui.adapters;
+package edu.rit.connors.brandon.swcompanion.adapters;
 
 import android.content.Context;
 
@@ -15,16 +15,16 @@ import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
-import edu.rit.connors.brandon.swcompanion.models.PageItem;
+import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
 import edu.rit.connors.brandon.swcompanion.util.HttpRequestClient;
 
-public class GridViewAdapter extends BaseAdapter implements View.OnClickListener {
+public abstract class GridListAdapter extends BaseAdapter implements View.OnClickListener {
     private Context ctx;
-    public ArrayList<PageItem> items;
+    public ArrayList<NetworkItem> items;
     public LayoutInflater inflater;
 
     // Gets the context so it can be used later
-    public GridViewAdapter(Context ctx, ArrayList<PageItem> items) {
+    public GridListAdapter(Context ctx, ArrayList<NetworkItem> items) {
         this.ctx = ctx;
         this.items = items;
         this.inflater = ( LayoutInflater )ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -37,7 +37,7 @@ public class GridViewAdapter extends BaseAdapter implements View.OnClickListener
     }
 
     // Require for structure, not really used in my code.
-    public PageItem getItem(int position) {
+    public NetworkItem getItem(int position) {
         return items.get(position);
     }
 
@@ -49,7 +49,7 @@ public class GridViewAdapter extends BaseAdapter implements View.OnClickListener
     }
 
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        PageItem item = items.get(position);
+        NetworkItem item = items.get(position);
 
         ViewHolder view = null;
         if (convertView == null) {
@@ -68,7 +68,7 @@ public class GridViewAdapter extends BaseAdapter implements View.OnClickListener
         HttpRequestClient.getInstance(ctx).loadImageView(item.getImgURL(), view.imageView);
         return convertView;
     }
-    public void setItems(ArrayList<PageItem> items){
+    public void setItems(ArrayList<NetworkItem> items){
         this.items = items;
         notifyDataSetChanged();
     }
@@ -76,7 +76,7 @@ public class GridViewAdapter extends BaseAdapter implements View.OnClickListener
     @Override
     public void onClick(View view) {
         int position = Integer.parseInt((String) view.getContentDescription());
-        PageItem item = items.get(position);
+        NetworkItem item = items.get(position);
 
         Intent intent = new Intent(ctx, WebViewActivity.class);
         intent.putExtra(WebViewActivity.URL_EXTRA, item.getPageURL());

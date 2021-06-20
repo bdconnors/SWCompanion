@@ -2,25 +2,25 @@ package edu.rit.connors.brandon.swcompanion.models;
 
 import java.io.Serializable;
 
-public class PageItem implements Serializable {
+public class NetworkItem implements Serializable {
     public String id;
     public String title;
     public String imgURL;
     public String pageURL;
 
-    public PageItem() { }
+    public NetworkItem() { }
 
-    public PageItem(String id) {
+    public NetworkItem(String id) {
         this.id = id;
     }
 
-    public PageItem(String title, String imgURL, String pageURL) {
+    public NetworkItem(String title, String imgURL, String pageURL) {
         this.title = title;
         this.imgURL = imgURL;
         this.pageURL = pageURL;
     }
 
-    public PageItem(String id, String title, String imgURL, String pageURL) {
+    public NetworkItem(String id, String title, String imgURL, String pageURL) {
         this.id = id;
         this.title = title;
         this.imgURL = imgURL;

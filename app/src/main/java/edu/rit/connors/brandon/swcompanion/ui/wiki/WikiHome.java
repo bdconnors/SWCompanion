@@ -17,8 +17,10 @@ import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
 
-import edu.rit.connors.brandon.swcompanion.ui.adapters.TabPagerAdapter;
-import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants;
+import edu.rit.connors.brandon.swcompanion.adapters.TabPagerAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.wiki.adapters.WikiTabPagerAdapter;
+import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants.DataPage;
+import edu.rit.connors.brandon.swcompanion.parsers.WikiDataSourceParser;
 
 public class WikiHome extends Fragment {
 
@@ -36,9 +38,9 @@ public class WikiHome extends Fragment {
         pager = view.findViewById(R.id.pager);
         tabTitles = getResources().getStringArray(R.array.wiki_tabs);
         tabFragments = new ArrayList<>();
-        tabFragments.add(new WikiGrid(DataSourceConstants.DataPage.WIKI_TRENDING));
-        tabFragments.add(new WikiGrid(DataSourceConstants.DataPage.WIKI_POPULAR));
-        adapter = new TabPagerAdapter(this, tabFragments);
+        tabFragments.add(new WikiGrid(new WikiDataSourceParser(), DataPage.WIKI_TRENDING));
+        tabFragments.add(new WikiGrid(new WikiDataSourceParser(), DataPage.WIKI_POPULAR));
+        adapter = new WikiTabPagerAdapter(this, tabFragments);
         pager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, pager,
                 (tab, position) -> tab.setText(tabTitles[position])

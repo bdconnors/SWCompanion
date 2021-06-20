@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import edu.rit.connors.brandon.swcompanion.ui.wiki.WikiHome;
 import edu.rit.connors.brandon.swcompanion.ui.wiki.WikiSearch;
+import edu.rit.connors.brandon.swcompanion.parsers.WikiDataSourceParser;
 
 public class WikiActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     Toolbar toolbar;
@@ -24,7 +25,7 @@ public class WikiActivity extends AppCompatActivity implements SearchView.OnQuer
         searchView = findViewById(R.id.search_bar);
         searchView.setOnQueryTextListener(this);
         fragmentManager = getSupportFragmentManager();
-        searchFragment = new WikiSearch();
+        searchFragment = new WikiSearch(new WikiDataSourceParser());
         initToolbar();
         displayHome();
     }
