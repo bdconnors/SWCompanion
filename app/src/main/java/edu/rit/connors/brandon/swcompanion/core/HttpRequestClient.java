@@ -1,11 +1,13 @@
-package edu.rit.connors.brandon.swcompanion.util;
+package edu.rit.connors.brandon.swcompanion.core;
 
-import android.content.Context;
 import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
 
 import edu.rit.connors.brandon.swcompanion.R;
+import edu.rit.connors.brandon.swcompanion.core.values.HttpStrings;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -15,19 +17,17 @@ public class HttpRequestClient {
 
     private static volatile HttpRequestClient instance;
     private final OkHttpClient client;
-    private final Context ctx;
 
-    private HttpRequestClient(Context context) {
-        this.ctx = context;
+    private HttpRequestClient() {
         this.client = new OkHttpClient();
     }
 
-    public static HttpRequestClient getInstance(Context context) {
+    public static HttpRequestClient getInstance() {
 
         if (instance == null) {
             synchronized (HttpRequestClient.class) {
                 if (instance == null)
-                    instance = new HttpRequestClient(context);
+                    instance = new HttpRequestClient();
             }
         }
 
@@ -36,17 +36,28 @@ public class HttpRequestClient {
 
 
     public void request(String url, Callback callback){
+
         Request request = new Request.Builder().url(url).build();
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+    }
+    public void request(String url, Callback callback, boolean forceMobile){
+
+        Request request;
+        if(forceMobile){
+            request = new Request.Builder().addHeader(HttpStrings.USER_AGENT, HttpStrings.MOBILE_USER_AGENT).url(url).build();
+        }else{
+            request = new Request.Builder().url(url).build();
+        }
+
         Call call = client.newCall(request);
         call.enqueue(callback);
     }
 
     public void requestMobile(String url, Callback callback){
-        String agentStr = ctx.getString(R.string.user_agent);
-        String mobileStr = ctx.getString(R.string.mobile_user_agent);
 
 
-        Request request = new Request.Builder().addHeader(agentStr, mobileStr).url(url).build();
+        Request request = new Request.Builder().addHeader(HttpStrings.USER_AGENT, HttpStrings.MOBILE_USER_AGENT).url(url).build();
 
         Call call = client.newCall(request);
         call.enqueue(callback);

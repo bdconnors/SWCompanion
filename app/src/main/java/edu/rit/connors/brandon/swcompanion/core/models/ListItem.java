@@ -1,26 +1,26 @@
-package edu.rit.connors.brandon.swcompanion.models;
+package edu.rit.connors.brandon.swcompanion.core.models;
 
 import java.io.Serializable;
 
-public class NetworkItem implements Serializable {
+public class ListItem implements Serializable {
     public String id;
     public String title;
     public String imgURL;
     public String pageURL;
 
-    public NetworkItem() { }
+    public ListItem() { }
 
-    public NetworkItem(String id) {
+    public ListItem(String id) {
         this.id = id;
     }
 
-    public NetworkItem(String title, String imgURL, String pageURL) {
+    public ListItem(String title, String imgURL, String pageURL) {
         this.title = title;
         this.imgURL = imgURL;
         this.pageURL = pageURL;
     }
 
-    public NetworkItem(String id, String title, String imgURL, String pageURL) {
+    public ListItem(String id, String title, String imgURL, String pageURL) {
         this.id = id;
         this.title = title;
         this.imgURL = imgURL;

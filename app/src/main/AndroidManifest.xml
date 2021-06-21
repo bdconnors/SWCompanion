@@ -23,13 +23,13 @@
         <activity
             android:name=".WebViewActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
-            android:parentActivityName=".WikiActivity">
+            android:parentActivityName=".HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".WikiActivity"/>
+                android:value=".HomeActivity"/>
         </activity>
         <activity
-            android:name=".WikiActivity"
+            android:name=".HomeActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
         </activity>
     </application>

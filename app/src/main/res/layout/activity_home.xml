@@ -7,35 +7,7 @@
     android:orientation="vertical"
     android:background="@color/black"
 >
-    <androidx.appcompat.widget.Toolbar
-       android:id="@+id/toolbar_main"
-       android:layout_width="match_parent"
-       android:layout_height="?android:attr/actionBarSize"
-       android:background="@color/dark_gray"
-    >
-       <ImageView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@drawable/ic_death_star"
-       />
-       <com.google.android.material.card.MaterialCardView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           app:cardElevation="0dp"
-           android:layout_gravity="center"
-       >
-           <SearchView
-               android:id="@+id/search_bar"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:queryHint="Search"
-               android:iconifiedByDefault="false"
-               android:background="@color/gray"
-
-               />
-       </com.google.android.material.card.MaterialCardView>
-
-    </androidx.appcompat.widget.Toolbar>
+    <include layout="@layout/toolbar_main"/>
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -73,15 +45,5 @@
         android:layout_above="@id/bottom_nav"
         android:layout_below="@id/toolbar_main"
     />-->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"
-        android:layout_alignParentBottom="true"
-        app:itemTextColor="@color/bottom_nav_color"
-        app:itemIconTint="@color/bottom_nav_color"
-        app:elevation="0dp"
-        android:background="@color/dark_gray"
-    />
+    <include layout="@layout/bottom_nav_main"/>
 </RelativeLayout>

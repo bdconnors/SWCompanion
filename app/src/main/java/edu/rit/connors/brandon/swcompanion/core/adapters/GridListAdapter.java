@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.adapters;
+package edu.rit.connors.brandon.swcompanion.core.adapters;
 
 import android.content.Context;
 
@@ -15,16 +15,16 @@ import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
-import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
-import edu.rit.connors.brandon.swcompanion.util.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
 
-public abstract class GridListAdapter extends BaseAdapter implements View.OnClickListener {
+public class GridListAdapter extends BaseAdapter implements IListAdapter, View.OnClickListener {
     private Context ctx;
-    public ArrayList<NetworkItem> items;
+    public ArrayList<ListItem> items;
     public LayoutInflater inflater;
 
     // Gets the context so it can be used later
-    public GridListAdapter(Context ctx, ArrayList<NetworkItem> items) {
+    public GridListAdapter(Context ctx, ArrayList<ListItem> items) {
         this.ctx = ctx;
         this.items = items;
         this.inflater = ( LayoutInflater )ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -37,7 +37,7 @@ public abstract class GridListAdapter extends BaseAdapter implements View.OnClic
     }
 
     // Require for structure, not really used in my code.
-    public NetworkItem getItem(int position) {
+    public ListItem getItem(int position) {
         return items.get(position);
     }
 
@@ -49,7 +49,7 @@ public abstract class GridListAdapter extends BaseAdapter implements View.OnClic
     }
 
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        NetworkItem item = items.get(position);
+        ListItem item = items.get(position);
 
         ViewHolder view = null;
         if (convertView == null) {
@@ -65,18 +65,26 @@ public abstract class GridListAdapter extends BaseAdapter implements View.OnClic
             view = (ViewHolder) convertView.getTag();
         }
         view.textView.setText(item.getTitle());
-        HttpRequestClient.getInstance(ctx).loadImageView(item.getImgURL(), view.imageView);
+        HttpRequestClient.getInstance().loadImageView(item.getImgURL(), view.imageView);
         return convertView;
     }
-    public void setItems(ArrayList<NetworkItem> items){
+
+    @Override
+    public void setItems(ArrayList<ListItem> items){
         this.items = items;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public void clearItems() {
+        this.items = new ArrayList<>();
         notifyDataSetChanged();
     }
 
     @Override
     public void onClick(View view) {
         int position = Integer.parseInt((String) view.getContentDescription());
-        NetworkItem item = items.get(position);
+        ListItem item = items.get(position);
 
         Intent intent = new Intent(ctx, WebViewActivity.class);
         intent.putExtra(WebViewActivity.URL_EXTRA, item.getPageURL());

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.fragments;
+package edu.rit.connors.brandon.swcompanion.core.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,16 +12,16 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.adapters.GridListAdapter;
-import edu.rit.connors.brandon.swcompanion.ui.wiki.adapters.WikiGridListAdapter;
-import edu.rit.connors.brandon.swcompanion.parsers.IDataSourceParser;
+import edu.rit.connors.brandon.swcompanion.core.adapters.GridListAdapter;
+import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
 
-public abstract class GridListFragment extends NetworkListFragment {
+public class GridListFragment extends NetworkListFragment {
+
     public GridView gridView;
-    public GridListAdapter adapter;
 
-    public GridListFragment(IDataSourceParser parser) {
+    public GridListFragment(DataSourceParser parser) {
         super(parser);
+        setForceMobile(true);
     }
 
 
@@ -29,18 +29,14 @@ public abstract class GridListFragment extends NetworkListFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.grid_list_fragment, container, false);
         gridView = view.findViewById(R.id.grid_view);
-        adapter = new WikiGridListAdapter(getContext(), new ArrayList<>());
-        gridView.setAdapter(adapter);
+        adapter = new GridListAdapter(getContext(), new ArrayList<>());
+        gridView.setAdapter((GridListAdapter) adapter);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadGrid();
-    }
-
-    public void loadGrid(){
-        showSpinner();
+        load();
     }
 }

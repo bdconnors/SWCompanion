@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.fragments;
+package edu.rit.connors.brandon.swcompanion.core.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,16 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.adapters.NetworkListAdapter;
-import edu.rit.connors.brandon.swcompanion.parsers.IDataSourceParser;
+import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
 
 public abstract class RecyclerListFragment extends NetworkListFragment {
 
     protected RecyclerView recyclerView;
     protected RecyclerView.LayoutManager layoutManager;
-    protected NetworkListAdapter adapter;
 
-    public RecyclerListFragment(IDataSourceParser parser) {
+    public RecyclerListFragment(DataSourceParser parser) {
         super(parser);
     }
 
@@ -38,4 +36,5 @@ public abstract class RecyclerListFragment extends NetworkListFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 }

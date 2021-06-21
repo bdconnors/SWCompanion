@@ -2,12 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottom_nav_1"
+        android:icon="@drawable/ic_darth_vader"
+        android:title="News"
+        />
+    <item
+        android:id="@+id/bottom_nav_2"
         android:icon="@drawable/ic_boba_fett"
         android:title="Wiki"
     />
-    <item
-        android:id="@+id/bottom_nav_2"
-        android:icon="@drawable/ic_darth_vader"
-        android:title="@string/bottom_nav_2"
-        />
+
 </menu>

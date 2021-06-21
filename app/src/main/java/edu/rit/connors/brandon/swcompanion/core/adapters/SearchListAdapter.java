@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.adapters;
+package edu.rit.connors.brandon.swcompanion.core.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
-import edu.rit.connors.brandon.swcompanion.adapters.NetworkListAdapter;
-import edu.rit.connors.brandon.swcompanion.util.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
 
-public abstract class SearchListAdapter extends NetworkListAdapter {
+public class SearchListAdapter extends ListAdapter {
 
-    public SearchListAdapter(Context context, ArrayList<NetworkItem> items) {
+    public SearchListAdapter(Context context, ArrayList<ListItem> items) {
         super(context, items);
     }
 
@@ -35,8 +34,8 @@ public abstract class SearchListAdapter extends NetworkListAdapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         SearchItemViewHolder holder = (SearchItemViewHolder) viewHolder;
-        NetworkItem item = items.get(position);
-        HttpRequestClient client = HttpRequestClient.getInstance(context);
+        ListItem item = items.get(position);
+        HttpRequestClient client = HttpRequestClient.getInstance();
 
         client.loadImageView(item.getImgURL(),holder.getImageView());
         holder.getTextView().setText(item.getTitle());

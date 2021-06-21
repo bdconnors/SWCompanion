@@ -9,22 +9,18 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
-import edu.rit.connors.brandon.swcompanion.fragments.GridListFragment;
-import edu.rit.connors.brandon.swcompanion.util.DataSourceConstants;
-import edu.rit.connors.brandon.swcompanion.util.HttpRequestClient;
-import edu.rit.connors.brandon.swcompanion.parsers.IDataSourceParser;
+import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.core.values.WikiStrings;
+import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.core.fragments.GridListFragment;
+import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
 import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.Response;
 
-public class WikiGrid extends GridListFragment implements Callback{
+public class WikiGrid extends GridListFragment {
 
-    private final DataSourceConstants.DataPage page;
-
-    public WikiGrid(IDataSourceParser parser,DataSourceConstants.DataPage page) {
+    public WikiGrid(DataSourceParser parser) {
         super(parser);
-        this.page = page;
     }
 
     @Override
@@ -39,21 +35,17 @@ public class WikiGrid extends GridListFragment implements Callback{
     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
         final String data = response.body().string();
         Document doc = Jsoup.parse(data);
-        ArrayList<NetworkItem> items = parser.parse(doc,page);
+        ArrayList<ListItem> items = parser.parse(doc);
         getActivity().runOnUiThread(() -> {
             hideSpinner();
             adapter.setItems(items);
         });
     }
     @Override
-    public void loadGrid() {
-        super.loadGrid();
-        String url = DataSourceConstants.Url.Wiki.MAIN;
-        HttpRequestClient.getInstance(getContext()).requestMobile(url, this);
+    public void load() {
+        super.load();
+        String url = WikiStrings.MAIN_PAGE_URL;
+        HttpRequestClient.getInstance().requestMobile(url, this);
     }
 
-    @Override
-    public void onRefresh() {
-        loadGrid();
-    }
 }

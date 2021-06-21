@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.adapters.SearchListAdapter;
-import edu.rit.connors.brandon.swcompanion.models.NetworkItem;
-import edu.rit.connors.brandon.swcompanion.adapters.NetworkListAdapter;
-import edu.rit.connors.brandon.swcompanion.models.NewsNetworkItem;
-import edu.rit.connors.brandon.swcompanion.util.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.core.adapters.ListAdapter;
+import edu.rit.connors.brandon.swcompanion.core.models.NewsListItem;
+import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
 
-public class NewsListAdapter extends NetworkListAdapter {
-    public NewsListAdapter(Context context, ArrayList<NetworkItem> items) {
+public class NewsListAdapter extends ListAdapter {
+
+    public NewsListAdapter(Context context, ArrayList<ListItem> items) {
         super(context, items);
     }
 
@@ -28,36 +28,39 @@ public class NewsListAdapter extends NetworkListAdapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.search_list_item, viewGroup, false);
+                .inflate(R.layout.news_list_item, viewGroup, false);
 
-        return new SearchListAdapter.SearchItemViewHolder(v);
+        return new NewsItemViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         NewsItemViewHolder holder = (NewsItemViewHolder) viewHolder;
-        NewsNetworkItem item = (NewsNetworkItem) items.get(position);
-        HttpRequestClient client = HttpRequestClient.getInstance(context);
+        NewsListItem item = (NewsListItem) items.get(position);
+        HttpRequestClient client = HttpRequestClient.getInstance();
 
         client.loadImageView(item.getImgURL(),holder.getImageView());
         holder.getPrimaryTextView().setText(item.getTitle());
-        holder.getSecondaryTextView().setText(item.getSecondaryTitle());
-        holder.getBodyTextView().setText(item.getContentBody());
+        holder.getBodyTextView().setText(item.getBodyText());
+        holder.getAuthorTextView().setText(item.getAuthor());
+        holder.getFooterTextView().setText(item.getFooterText());
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(this);
     }
     public static class NewsItemViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
         private final TextView primaryTextView;
-        private final TextView secondaryTextView;
         private final TextView bodyTextView;
+        private final TextView authorTextView;
+        private final TextView footerTextView;
 
         public NewsItemViewHolder(@NonNull View view) {
             super(view);
             imageView = view.findViewById(R.id.imageView);
             primaryTextView = view.findViewById(R.id.primaryTextView);
-            secondaryTextView = view.findViewById(R.id.secondaryTextView);
             bodyTextView = view.findViewById(R.id.bodyTextView);
+            authorTextView = view.findViewById(R.id.authorTextView);
+            footerTextView = view.findViewById(R.id.footerTextView);
         }
 
         public ImageView getImageView() {
@@ -68,12 +71,16 @@ public class NewsListAdapter extends NetworkListAdapter {
             return primaryTextView;
         }
 
-        public TextView getSecondaryTextView() {
-            return secondaryTextView;
-        }
-
         public TextView getBodyTextView() {
             return bodyTextView;
+        }
+
+        public TextView getFooterTextView() {
+            return footerTextView;
+        }
+
+        public TextView getAuthorTextView() {
+            return authorTextView;
         }
     }
 }
