@@ -16,11 +16,11 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.core.adapters.ListAdapter;
-import edu.rit.connors.brandon.swcompanion.core.fragments.RecyclerListFragment;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
-import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.ListAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.fragments.RecyclerListFragment;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 import edu.rit.connors.brandon.swcompanion.ui.news.adapters.NewsListAdapter;
 import okhttp3.Call;
 import okhttp3.Response;

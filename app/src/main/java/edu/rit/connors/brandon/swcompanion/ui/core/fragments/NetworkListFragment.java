@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.fragments;
+package edu.rit.connors.brandon.swcompanion.ui.core.fragments;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +16,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.core.adapters.IListAdapter;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
-import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.IListAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.adapters;
+package edu.rit.connors.brandon.swcompanion.ui.core.adapters;
 
 import android.content.Context;
 
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 
 public class GridListAdapter extends BaseAdapter implements IListAdapter, View.OnClickListener {
     private Context ctx;

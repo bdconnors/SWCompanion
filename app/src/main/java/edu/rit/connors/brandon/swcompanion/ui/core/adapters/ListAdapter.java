@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.adapters;
+package edu.rit.connors.brandon.swcompanion.ui.core.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
 
 public abstract class ListAdapter extends Adapter<RecyclerView.ViewHolder> implements IListAdapter, OnClickListener {
     protected final Context context;

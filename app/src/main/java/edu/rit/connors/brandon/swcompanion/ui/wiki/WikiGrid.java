@@ -9,11 +9,11 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
-import edu.rit.connors.brandon.swcompanion.core.values.WikiStrings;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
-import edu.rit.connors.brandon.swcompanion.core.fragments.GridListFragment;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.ui.core.values.WikiStrings;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.fragments.GridListFragment;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -45,7 +45,7 @@ public class WikiGrid extends GridListFragment {
     public void load() {
         super.load();
         String url = WikiStrings.MAIN_PAGE_URL;
-        HttpRequestClient.getInstance().requestMobile(url, this);
+        HttpRequestClient.getInstance().request(url, this, true);
     }
 
 }

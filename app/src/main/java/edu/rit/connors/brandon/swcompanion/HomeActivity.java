@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +17,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-import edu.rit.connors.brandon.swcompanion.core.fragments.SearchViewListFragment;
+import edu.rit.connors.brandon.swcompanion.api.ApiUrl;
+import edu.rit.connors.brandon.swcompanion.api.SWApi;
+import edu.rit.connors.brandon.swcompanion.api.models.Person;
+import edu.rit.connors.brandon.swcompanion.api.providers.PersonProvider;
+import edu.rit.connors.brandon.swcompanion.ui.core.fragments.SearchViewListFragment;
 import edu.rit.connors.brandon.swcompanion.ui.news.NewsHome;
 import edu.rit.connors.brandon.swcompanion.ui.wiki.WikiHome;
 import edu.rit.connors.brandon.swcompanion.ui.wiki.parsers.WikiSearchParser;
@@ -41,6 +46,8 @@ public class HomeActivity extends AppCompatActivity implements SearchView.OnQuer
         initToolbar();
         searchView.setVisibility(View.GONE);
         displayFragment(new NewsHome());
+        PersonProvider provider = new PersonProvider(this, ApiUrl.PEOPLE_URL);
+        provider.load();
     }
     public void displayFragment(Fragment fragment){
         fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment).commit();

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.adapters;
+package edu.rit.connors.brandon.swcompanion.ui.core.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 
 public class SearchListAdapter extends ListAdapter {
 

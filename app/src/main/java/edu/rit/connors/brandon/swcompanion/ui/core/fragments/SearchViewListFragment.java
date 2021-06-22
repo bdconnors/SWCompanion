@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.fragments;
+package edu.rit.connors.brandon.swcompanion.ui.core.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.core.adapters.ListAdapter;
-import edu.rit.connors.brandon.swcompanion.core.adapters.SearchListAdapter;
-import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.ListAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.SearchListAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 
 public class SearchViewListFragment extends RecyclerListFragment {
 

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.values;
+package edu.rit.connors.brandon.swcompanion.ui.core.values;
 
 public class HttpStrings {
     public static final String USER_AGENT = "User-Agent";

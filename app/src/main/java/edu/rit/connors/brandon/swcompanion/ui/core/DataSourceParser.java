@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core;
+package edu.rit.connors.brandon.swcompanion.ui.core;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -6,7 +6,7 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
 
 public abstract class DataSourceParser {
 

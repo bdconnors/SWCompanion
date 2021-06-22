@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.models;
+package edu.rit.connors.brandon.swcompanion.ui.core.models;
 
 import java.io.Serializable;
 

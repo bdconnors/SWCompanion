@@ -1,13 +1,11 @@
-package edu.rit.connors.brandon.swcompanion.core;
+package edu.rit.connors.brandon.swcompanion.ui.core;
 
 import android.widget.ImageView;
-
-import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.core.values.HttpStrings;
+import edu.rit.connors.brandon.swcompanion.ui.core.values.HttpStrings;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -54,14 +52,6 @@ public class HttpRequestClient {
         call.enqueue(callback);
     }
 
-    public void requestMobile(String url, Callback callback){
-
-
-        Request request = new Request.Builder().addHeader(HttpStrings.USER_AGENT, HttpStrings.MOBILE_USER_AGENT).url(url).build();
-
-        Call call = client.newCall(request);
-        call.enqueue(callback);
-    }
 
     public void loadImageView(String url, ImageView imageView){
         if(url.isEmpty()){

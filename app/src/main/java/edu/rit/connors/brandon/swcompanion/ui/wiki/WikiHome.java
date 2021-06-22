@@ -1,9 +1,9 @@
 package edu.rit.connors.brandon.swcompanion.ui.wiki;
 import androidx.fragment.app.Fragment;
 
-import edu.rit.connors.brandon.swcompanion.core.fragments.GridListFragment;
-import edu.rit.connors.brandon.swcompanion.core.fragments.TabPagerFragment;
-import edu.rit.connors.brandon.swcompanion.core.values.WikiStrings;
+import edu.rit.connors.brandon.swcompanion.ui.core.fragments.GridListFragment;
+import edu.rit.connors.brandon.swcompanion.ui.core.fragments.TabPagerFragment;
+import edu.rit.connors.brandon.swcompanion.ui.core.values.WikiStrings;
 import edu.rit.connors.brandon.swcompanion.ui.wiki.parsers.WikiPopularParser;
 import edu.rit.connors.brandon.swcompanion.ui.wiki.parsers.WikiTrendingParser;
 

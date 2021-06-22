@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.core.models.ListItem;
-import edu.rit.connors.brandon.swcompanion.core.adapters.ListAdapter;
-import edu.rit.connors.brandon.swcompanion.core.models.NewsListItem;
-import edu.rit.connors.brandon.swcompanion.core.HttpRequestClient;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.ListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.ListAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.models.NewsListItem;
+import edu.rit.connors.brandon.swcompanion.ui.core.HttpRequestClient;
 
 public class NewsListAdapter extends ListAdapter {
 

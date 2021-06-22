@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.fragments;
+package edu.rit.connors.brandon.swcompanion.ui.core.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import edu.rit.connors.brandon.swcompanion.R;
 
-import edu.rit.connors.brandon.swcompanion.core.adapters.TabPagerAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.TabPagerAdapter;
 
 public class TabPagerFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.values;
+package edu.rit.connors.brandon.swcompanion.ui.core.values;
 
 public class NewsStrings {
     public static final String ROOT_URL = "https://www.starwars.com/news";

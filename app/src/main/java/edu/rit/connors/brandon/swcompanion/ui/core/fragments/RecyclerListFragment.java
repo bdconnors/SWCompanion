@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.fragments;
+package edu.rit.connors.brandon.swcompanion.ui.core.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.ui.core.DataSourceParser;
 
 public abstract class RecyclerListFragment extends NetworkListFragment {
 

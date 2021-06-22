@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.core.fragments;
+package edu.rit.connors.brandon.swcompanion.ui.core.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.core.adapters.GridListAdapter;
-import edu.rit.connors.brandon.swcompanion.core.DataSourceParser;
+import edu.rit.connors.brandon.swcompanion.ui.core.adapters.GridListAdapter;
+import edu.rit.connors.brandon.swcompanion.ui.core.DataSourceParser;
 
 public class GridListFragment extends NetworkListFragment {
 
