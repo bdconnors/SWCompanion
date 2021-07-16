@@ -3,13 +3,10 @@ package edu.rit.connors.brandon.swcompanion;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import edu.rit.connors.brandon.swcompanion.api.SWApi;
-import edu.rit.connors.brandon.swcompanion.api.models.Person;
 
 public class MainActivity extends AppCompatActivity {
 

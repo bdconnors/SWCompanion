@@ -3,12 +3,12 @@
     <item
         android:id="@+id/bottom_nav_1"
         android:icon="@drawable/ic_darth_vader"
-        android:title="News"
+        android:title="@string/holonet"
         />
     <item
         android:id="@+id/bottom_nav_2"
         android:icon="@drawable/ic_boba_fett"
-        android:title="Wiki"
+        android:title="@string/databank"
     />
 
 </menu>

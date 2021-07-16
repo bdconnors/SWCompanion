@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsHomeFragment">
+
+    <fragment
+        android:id="@+id/newsHomeFragment"
+        android:name="edu.rit.connors.brandon.swcompanion.ui.news.NewsHomeFragment"
+        android:label="NewsHomeFragment" >
+        <action
+            android:id="@+id/action_newsHomeFragment_to_newsNetworkRecyclerFragment"
+            app:destination="@id/newsNetworkRecyclerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsNetworkRecyclerFragment"
+        android:name="edu.rit.connors.brandon.swcompanion.ui.news.NewsNetworkRecyclerFragment"
+        android:label="NewsNetworkRecyclerFragment" />
+</navigation>

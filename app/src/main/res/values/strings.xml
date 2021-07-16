@@ -21,6 +21,10 @@
         <item>Popular</item>
     </string-array>
 
+    <string-array name="news_tabs">
+        <item>StarWars.com</item>
+    </string-array>
+
     <!--HTTP request headers-->
     <string name="user_agent">User-Agent</string>
     <string name="mobile_user_agent">Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0</string>
@@ -55,6 +59,8 @@
     <string name="wiki_trending_items">div.mobile-main-page__trending-articles > div.mobile-gallery.mobile-gallery-navigational > div.mobile-gallery__columns > div.mobile-gallery__column > figure.mobile-gallery__image</string>
     <string name="wiki_popular_items">div.mobile-main-page__popular-categories > div.mobile-gallery.mobile-gallery-navigational > div.mobile-gallery__columns > div.mobile-gallery__column > figure.mobile-gallery__image</string>
     <string name="wiki_figcaption">figcaption.mobile-gallery__image-caption > span.mobile-gallery__image-caption-content</string>
+    <string name="databank">DataBank</string>
+    <string name="holonet">HoloNet</string>
 
 
 </resources>

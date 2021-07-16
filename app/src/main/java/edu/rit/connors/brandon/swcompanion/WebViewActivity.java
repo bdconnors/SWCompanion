@@ -8,6 +8,8 @@ import android.webkit.WebViewClient;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import edu.rit.connors.brandon.swcompanion.R;
+
 public class WebViewActivity extends AppCompatActivity {
 
     public static final String URL_EXTRA = "URL";
