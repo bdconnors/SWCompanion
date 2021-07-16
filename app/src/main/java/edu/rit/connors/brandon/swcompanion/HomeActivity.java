@@ -18,12 +18,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
 
-import java.util.HashMap;
-
 import edu.rit.connors.brandon.swcompanion.constants.AppPage;
-import edu.rit.connors.brandon.swcompanion.constants.WebSource;
-import edu.rit.connors.brandon.swcompanion.ui.news.NewsHomeFragment;
-import edu.rit.connors.brandon.swcompanion.ui.info.InfoHomeFragment;
+import edu.rit.connors.brandon.swcompanion.ui.holonet.HoloNetHomeFragment;
+import edu.rit.connors.brandon.swcompanion.ui.archive.ArchiveHomeFragment;
 
 public class HomeActivity extends AppCompatActivity implements OnQueryTextListener, OnNavigationItemSelectedListener {
 
@@ -43,19 +40,19 @@ public class HomeActivity extends AppCompatActivity implements OnQueryTextListen
         setupToolbar();
         setupFragmentManager();
         setupViewModel();
-        displayPage(AppPage.NEWS);
+        displayPage(AppPage.HOLONET);
 
     }
 
     public void displayPage(AppPage page){
 
-        Fragment fragment = new NewsHomeFragment();
+        Fragment fragment = new HoloNetHomeFragment();
         switch (page){
-            case NEWS:
-                fragment = new NewsHomeFragment();
+            case HOLONET:
+                fragment = new HoloNetHomeFragment();
                 break;
-            case INFO:
-                fragment = new InfoHomeFragment();
+            case ARCHIVE:
+                fragment = new ArchiveHomeFragment();
                 break;
             default:
         }
@@ -68,7 +65,7 @@ public class HomeActivity extends AppCompatActivity implements OnQueryTextListen
         viewModel.getActivePage().observe(this, item -> {
             Log.d("HomeActivity", "onViewCreated: " + item.toString());
         });
-        viewModel.setActivePage(AppPage.NEWS);
+        viewModel.setActivePage(AppPage.HOLONET);
     }
 
     public void setupFragmentManager(){
@@ -108,12 +105,12 @@ public class HomeActivity extends AppCompatActivity implements OnQueryTextListen
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.bottom_nav_1){
-            viewModel.getActivePage().setValue(AppPage.NEWS);
-            displayPage(AppPage.NEWS);
+            viewModel.getActivePage().setValue(AppPage.HOLONET);
+            displayPage(AppPage.HOLONET);
             return true;
         }else if(id == R.id.bottom_nav_2){
-            viewModel.getActivePage().setValue(AppPage.INFO);
-            displayPage(AppPage.INFO);
+            viewModel.getActivePage().setValue(AppPage.ARCHIVE);
+            displayPage(AppPage.ARCHIVE);
             return true;
         }else{
             return false;

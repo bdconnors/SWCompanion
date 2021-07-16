@@ -1,27 +1,30 @@
-package edu.rit.connors.brandon.swcompanion.ui.news;
+package edu.rit.connors.brandon.swcompanion.ui.holonet;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.domain.model.NewsArticle;
-import edu.rit.connors.brandon.swcompanion.domain.source.IDataSource;
-import edu.rit.connors.brandon.swcompanion.network.service.NewsService;
+import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
+import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
-public class NewsGridListAdapter extends GridListAdapter<IDataSource<NewsArticle>> {
-    public NewsGridListAdapter(Context context){
+public class HoloNetHomeAdapter extends GridListAdapter<IDataSource<HoloNetArticle>> {
+
+    private final Fragment[] fragments;
+    public HoloNetHomeAdapter(Context context, Fragment[] fragments){
         super(context, R.layout.grid_list_item);
+        this.fragments = fragments;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
-        IDataSource<NewsArticle> source = getItem(position);
+        IDataSource<HoloNetArticle> source = getItem(position);
         ViewHolder viewHolder;
         if(view == null){
             view = inflateView(viewGroup);
@@ -29,7 +32,7 @@ public class NewsGridListAdapter extends GridListAdapter<IDataSource<NewsArticle
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(
                         R.id.fragment_container,
-                        new NewsNetworkRecyclerFragment(new NewsService(source))
+                        fragments[position]
                 ).commit();
             });
         }else{

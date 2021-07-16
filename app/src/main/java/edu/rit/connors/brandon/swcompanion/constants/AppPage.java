@@ -3,9 +3,9 @@ package edu.rit.connors.brandon.swcompanion.constants;
 
 public enum AppPage {
 
-    NEWS("News"),
+    HOLONET("HoloNet"),
 
-    INFO("Info");
+    ARCHIVE("Archive");
 
     private final String text;
 

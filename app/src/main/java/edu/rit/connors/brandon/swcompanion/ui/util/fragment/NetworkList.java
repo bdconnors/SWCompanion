@@ -4,8 +4,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
-import edu.rit.connors.brandon.swcompanion.constants.WebSource;
-import edu.rit.connors.brandon.swcompanion.network.util.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
 import edu.rit.connors.brandon.swcompanion.ui.util.IListAdapter;
 import edu.rit.connors.brandon.swcompanion.ui.util.IRefreshable;
 

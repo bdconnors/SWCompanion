@@ -61,6 +61,7 @@
     <string name="wiki_figcaption">figcaption.mobile-gallery__image-caption > span.mobile-gallery__image-caption-content</string>
     <string name="databank">DataBank</string>
     <string name="holonet">HoloNet</string>
+    <string name="archive">Archive</string>
 
 
 </resources>

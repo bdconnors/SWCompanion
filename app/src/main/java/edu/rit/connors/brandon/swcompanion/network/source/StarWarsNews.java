@@ -1,6 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.domain.source;
-
-import android.graphics.drawable.Drawable;
+package edu.rit.connors.brandon.swcompanion.network.source;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,25 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.domain.model.NewsArticle;
+import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
 
-public class StarWarsNews implements IDataSource<NewsArticle>{
-
-    private static final String ROOT_URL = "https://www.starwars.com/news";
-    private static final String ARTICLES = "article";
-    private static final String CONTENT_SECTION = "section.cb-content";
-    private static final String PHOTO_SECTION = "section.cb-photo";
-    private static final String BYLINE_SECTION = "div.byline";
-    private static final String AUTHOR_SECTION = "div.byline-author";
-    private static final String DATE_SECTION = "div.byline-date";
-    private static final String CATEGORY_SECTION = "span.editorial";
-    private static final String IMAGE_LINK = "data-original";
-    private static final String CONTENT_BODY = "div.content-body";
+public class StarWarsNews implements IDataSource<HoloNetArticle> {
 
     @Override
     public String getUrl() {
-
-        return ROOT_URL;
+        return "https://www.starwars.com/news";
     }
     @Override
     public int getLogoId(){
@@ -41,24 +27,34 @@ public class StarWarsNews implements IDataSource<NewsArticle>{
     }
 
     @Override
-    public boolean mobileRequired(){
+    public boolean hasSections() {
         return false;
     }
 
     @Override
-    public List<NewsArticle> parseDocument(Document doc) {
+    public String[] getSectionTitles() {
+        return null;
+    }
 
-        List<NewsArticle> results = new ArrayList<>();
-        Elements elements = doc.select(ARTICLES);
+    @Override
+    public boolean mobileRequired(int sectionId){
+        return false;
+    }
 
-        NewsArticle curItem;
+    @Override
+    public List<HoloNetArticle> parseDocument(Document doc, int sectionId) {
+
+        List<HoloNetArticle> results = new ArrayList<>();
+        Elements elements = doc.select("article");
+
+        HoloNetArticle curItem;
         Element curElement;
         boolean hasURL;
         for(int i = 0; i < elements.size(); i++){
 
             curElement = elements.get(i);
 
-            curItem = parseElement(curElement);
+            curItem = parseElement(curElement, sectionId);
 
             hasURL = !curItem.url.equals("");
 
@@ -71,11 +67,11 @@ public class StarWarsNews implements IDataSource<NewsArticle>{
     }
 
     @Override
-    public NewsArticle parseElement(Element element){
-        NewsArticle item = new NewsArticle();
+    public HoloNetArticle parseElement(Element element, int sectionId){
+        HoloNetArticle item = new HoloNetArticle();
 
-        Element photoSection = element.selectFirst(PHOTO_SECTION);
-        Element contentSection = element.selectFirst(CONTENT_SECTION);
+        Element photoSection = element.selectFirst("section.cb-photo");
+        Element contentSection = element.selectFirst("section.cb-content");
 
         String title;
         String body;
@@ -86,14 +82,14 @@ public class StarWarsNews implements IDataSource<NewsArticle>{
 
         if(photoSection != null && contentSection != null){
 
-            Element contentBody = contentSection.selectFirst(CONTENT_BODY);
+            Element contentBody = contentSection.selectFirst("div.content-body");
 
             if(contentBody != null) {
 
-                Element bylineSection = contentSection.select(BYLINE_SECTION).get(0);
-                Element authorSection = bylineSection.select(AUTHOR_SECTION).get(0);
-                Element dateSection = bylineSection.select(DATE_SECTION).get(0);
-                Element categorySection = dateSection.select(CATEGORY_SECTION).get(0);
+                Element bylineSection = contentSection.select("div.byline").get(0);
+                Element authorSection = bylineSection.select("div.byline-author").get(0);
+                Element dateSection = bylineSection.select("div.byline-date").get(0);
+                Element categorySection = dateSection.select("span.editorial").get(0);
                 Element titleElement = contentSection.select("h2").get(0);
                 Element imgLinkElement = photoSection.selectFirst("a");
                 Element imgElement = imgLinkElement.selectFirst("img");
@@ -104,7 +100,7 @@ public class StarWarsNews implements IDataSource<NewsArticle>{
                 footer = makeFooter(category, date);
 
                 title = titleElement.text();
-                imgURL = imgElement.attr(IMAGE_LINK);
+                imgURL = imgElement.attr("data-original");
                 pageURL = imgLinkElement.attr("href");
 
                 author = makeAuthor(authorSection.selectFirst("a").ownText());

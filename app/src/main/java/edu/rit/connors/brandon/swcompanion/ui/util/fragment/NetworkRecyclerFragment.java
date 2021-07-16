@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.constants.WebSource;
-import edu.rit.connors.brandon.swcompanion.network.util.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
 import edu.rit.connors.brandon.swcompanion.ui.util.IListAdapter;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.RecyclerListAdapter;
 

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.ui.news;
+package edu.rit.connors.brandon.swcompanion.ui.holonet;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,12 +17,12 @@ import org.jetbrains.annotations.NotNull;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
-import edu.rit.connors.brandon.swcompanion.domain.model.NewsArticle;
+import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.RecyclerListAdapter;
 
-public class NewsRecyclerListAdapter extends RecyclerListAdapter<NewsArticle> implements View.OnClickListener {
+public class HoloNetListAdapter extends RecyclerListAdapter<HoloNetArticle> implements View.OnClickListener {
 
-    public NewsRecyclerListAdapter(Activity activity) {
+    public HoloNetListAdapter(Activity activity) {
         super(activity, R.layout.news_list_item);
     }
 
@@ -39,7 +39,7 @@ public class NewsRecyclerListAdapter extends RecyclerListAdapter<NewsArticle> im
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         ViewHolder holder = (ViewHolder)viewHolder;
-        NewsArticle item = (NewsArticle) items.get(position);
+        HoloNetArticle item = (HoloNetArticle) items.get(position);
         if(item.image.isEmpty()){
             holder.imageView.setImageResource(R.drawable.baseline_broken_image_white_24dp);
         }else {
@@ -60,7 +60,7 @@ public class NewsRecyclerListAdapter extends RecyclerListAdapter<NewsArticle> im
     public void onClick(View view) {
 
         int position = (int) view.getTag();
-        NewsArticle item = getItem(position);
+        HoloNetArticle item = getItem(position);
 
         Intent intent = new Intent(activity, WebViewActivity.class);
         intent.putExtra(WebViewActivity.URL_EXTRA, item.url);

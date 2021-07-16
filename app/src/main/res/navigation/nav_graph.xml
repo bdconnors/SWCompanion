@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/newsHomeFragment"
-        android:name="edu.rit.connors.brandon.swcompanion.ui.news.NewsHomeFragment"
+        android:name="edu.rit.connors.brandon.swcompanion.ui.holonet.HoloNetHomeFragment"
         android:label="NewsHomeFragment" >
         <action
             android:id="@+id/action_newsHomeFragment_to_newsNetworkRecyclerFragment"
@@ -14,6 +14,6 @@
     </fragment>
     <fragment
         android:id="@+id/newsNetworkRecyclerFragment"
-        android:name="edu.rit.connors.brandon.swcompanion.ui.news.NewsNetworkRecyclerFragment"
+        android:name="edu.rit.connors.brandon.swcompanion.ui.holonet.HoloNetListFragment"
         android:label="NewsNetworkRecyclerFragment" />
 </navigation>

@@ -1,26 +1,28 @@
-package edu.rit.connors.brandon.swcompanion.ui.info;
+package edu.rit.connors.brandon.swcompanion.ui.archive;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.domain.model.InfoArticle;
-import edu.rit.connors.brandon.swcompanion.domain.source.IDataSource;
+import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
+import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
-public class InfoHomeGridListAdapter extends GridListAdapter<IDataSource<InfoArticle>>{
-
-    public InfoHomeGridListAdapter(Context context) {
+public class ArchiveHomeAdapter extends GridListAdapter<IDataSource<ArchiveArticle>>{
+    public final Fragment[] fragments;
+    public ArchiveHomeAdapter(Context context, Fragment[] fragments) {
         super(context, R.layout.grid_list_item);
+        this.fragments = fragments;
     }
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        IDataSource<InfoArticle> source = getItem(position);
+        IDataSource<ArchiveArticle> source = getItem(position);
         ViewHolder viewHolder;
         if(view == null) {
             view = inflateView(viewGroup);
@@ -28,7 +30,7 @@ public class InfoHomeGridListAdapter extends GridListAdapter<IDataSource<InfoArt
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(
                         R.id.fragment_container,
-                        new WookieepediaFragment()
+                        fragments[position]
                 ).commit();
             });
         }else{

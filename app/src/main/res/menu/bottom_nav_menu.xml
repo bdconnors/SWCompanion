@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bottom_nav_1"
-        android:icon="@drawable/ic_darth_vader"
+        android:icon="@drawable/ic_holo_net_dark"
         android:title="@string/holonet"
         />
     <item
         android:id="@+id/bottom_nav_2"
-        android:icon="@drawable/ic_boba_fett"
-        android:title="@string/databank"
+        android:icon="@drawable/ic_archives_dark"
+        android:title="@string/archive"
     />
 
 </menu>

@@ -1,4 +1,4 @@
-package edu.rit.connors.brandon.swcompanion.ui.news;
+package edu.rit.connors.brandon.swcompanion.ui.holonet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,23 +8,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import edu.rit.connors.brandon.swcompanion.constants.WebSource;
-
-import edu.rit.connors.brandon.swcompanion.domain.model.NewsArticle;
-import edu.rit.connors.brandon.swcompanion.network.util.INetworkService;
+import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
+import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkRecyclerFragment;
 
-public class NewsNetworkRecyclerFragment extends NetworkRecyclerFragment<NewsArticle> {
+public class HoloNetListFragment extends NetworkRecyclerFragment<HoloNetArticle> {
 
-    public NewsNetworkRecyclerFragment(INetworkService<NewsArticle> service) {
+    public final int sectionId;
+    public HoloNetListFragment(INetworkService<HoloNetArticle> service, int sectionId) {
         super(service);
+        this.sectionId = sectionId;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable  ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-        this.setAdapter(new NewsRecyclerListAdapter(getActivity()));
+        this.setAdapter(new HoloNetListAdapter(getActivity()));
         return view;
     }
 
@@ -35,7 +35,7 @@ public class NewsNetworkRecyclerFragment extends NetworkRecyclerFragment<NewsArt
     }
 
     public void load() {
-        getService().load(this);
+        getService().load(this, sectionId);
     }
 
     @Override

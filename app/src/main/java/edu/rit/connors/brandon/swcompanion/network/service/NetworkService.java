@@ -10,9 +10,7 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.List;
 
-import edu.rit.connors.brandon.swcompanion.domain.model.NewsArticle;
-import edu.rit.connors.brandon.swcompanion.domain.source.IDataSource;
-import edu.rit.connors.brandon.swcompanion.network.util.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkList;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -29,11 +27,11 @@ public abstract class NetworkService<T> implements INetworkService<T> {
         this.dataSource = dataSource;
     }
 
-    public void load(NetworkList<T> listView){
+    public void load(NetworkList<T> listView, int sectionId){
         listView.setLoading(true);
         Activity activity = listView.getActivity();
         Log.d("NetworkService", "load: " + dataSource.getUrl());
-        Request request = buildRequest(dataSource.getUrl(), dataSource.mobileRequired());
+        Request request = buildRequest(dataSource.getUrl(), dataSource.mobileRequired(sectionId));
         executeRequest(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -45,7 +43,7 @@ public abstract class NetworkService<T> implements INetworkService<T> {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String html = response.body().string();
                 Document doc = Jsoup.parse(html);
-                List<T> results = getDataSource().parseDocument(doc);
+                List<T> results = getDataSource().parseDocument(doc, sectionId);
                 Log.d("NetworkService", "onResponse: " + results.size());
                 activity.runOnUiThread(()->{
                     listView.getAdapter().setItems(results);

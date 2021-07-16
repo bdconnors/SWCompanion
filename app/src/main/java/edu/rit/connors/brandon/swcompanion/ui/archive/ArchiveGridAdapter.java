@@ -1,23 +1,22 @@
-package edu.rit.connors.brandon.swcompanion.ui.info;
+package edu.rit.connors.brandon.swcompanion.ui.archive;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
-import edu.rit.connors.brandon.swcompanion.domain.model.InfoArticle;
+import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
-public class InfoGridListAdapter extends GridListAdapter<InfoArticle>  {
+public class ArchiveGridAdapter extends GridListAdapter<ArchiveArticle>  {
 
-    public InfoGridListAdapter(Activity activity) {
+    public ArchiveGridAdapter(Activity activity) {
         super(activity, R.layout.grid_list_item);
     }
 

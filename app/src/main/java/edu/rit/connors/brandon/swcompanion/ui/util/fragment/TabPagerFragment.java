@@ -15,7 +15,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.constants.WebSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.TabPagerAdapter;
 
 public abstract class TabPagerFragment extends Fragment {
@@ -24,11 +23,11 @@ public abstract class TabPagerFragment extends Fragment {
     public TabLayout tabLayout;
     public FragmentStateAdapter adapter;
     public ViewPager2 pager;
-    public final WebSource[] pages;
+    public final String[] tabs;
     public final Fragment[] fragments;
 
-    public TabPagerFragment(WebSource[] pages, Fragment[] fragments){
-        this.pages = pages;
+    public TabPagerFragment(String[] tabs, Fragment[] fragments){
+        this.tabs = tabs;
         this.fragments = fragments;
     }
 
@@ -41,7 +40,7 @@ public abstract class TabPagerFragment extends Fragment {
         adapter = new TabPagerAdapter(this, fragments);
         pager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, pager,
-                (tab, i) -> tab.setText(pages[i].toString())
+                (tab, i) -> tab.setText(tabs[i])
         ).attach();
         return view;
     }
