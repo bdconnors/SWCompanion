@@ -14,6 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
@@ -31,6 +33,7 @@ public class HomeActivity extends AppCompatActivity implements OnQueryTextListen
     BottomNavigationView bottomNavigationView;
 
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements OnQueryTextListen
 
     public void displayPage(AppPage page){
 
-        Fragment fragment = new HoloNetHomeFragment();
+        Fragment fragment;
         switch (page){
             case HOLONET:
                 fragment = new HoloNetHomeFragment();
@@ -55,6 +58,8 @@ public class HomeActivity extends AppCompatActivity implements OnQueryTextListen
                 fragment = new ArchiveHomeFragment();
                 break;
             default:
+                fragment = new HoloNetHomeFragment();
+                break;
         }
 
         fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();

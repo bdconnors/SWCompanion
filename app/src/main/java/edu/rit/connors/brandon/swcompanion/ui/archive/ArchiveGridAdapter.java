@@ -14,7 +14,7 @@ import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
-public class ArchiveGridAdapter extends GridListAdapter<ArchiveArticle>  {
+public class ArchiveGridAdapter extends GridListAdapter<Article>  {
 
     public ArchiveGridAdapter(Activity activity) {
         super(activity, R.layout.grid_list_item);

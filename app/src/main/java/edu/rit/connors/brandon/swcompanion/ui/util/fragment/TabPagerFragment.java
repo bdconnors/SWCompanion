@@ -23,12 +23,12 @@ public abstract class TabPagerFragment extends Fragment {
     public TabLayout tabLayout;
     public FragmentStateAdapter adapter;
     public ViewPager2 pager;
-    public final String[] tabs;
-    public final Fragment[] fragments;
+    public final String[] tabTitles;
+    public final Fragment[] tabViews;
 
-    public TabPagerFragment(String[] tabs, Fragment[] fragments){
-        this.tabs = tabs;
-        this.fragments = fragments;
+    public TabPagerFragment(String[] tabTitles, Fragment[] tabViews){
+        this.tabTitles = tabTitles;
+        this.tabViews = tabViews;
     }
 
     @Nullable
@@ -37,10 +37,10 @@ public abstract class TabPagerFragment extends Fragment {
         View view = inflater.inflate(R.layout.tab_pager_fragment, container, false);
         tabLayout = view.findViewById(R.id.tab_layout);
         pager = view.findViewById(R.id.pager);
-        adapter = new TabPagerAdapter(this, fragments);
+        adapter = new TabPagerAdapter(this, tabViews);
         pager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, pager,
-                (tab, i) -> tab.setText(tabs[i])
+                (tab, i) -> tab.setText(tabTitles[i])
         ).attach();
         return view;
     }

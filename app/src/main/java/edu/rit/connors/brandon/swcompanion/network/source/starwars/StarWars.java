@@ -1,18 +1,29 @@
-package edu.rit.connors.brandon.swcompanion.network.source;
+package edu.rit.connors.brandon.swcompanion.network.source.starwars;
 
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
+import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
 
-public class StarWarsNews implements IDataSource<HoloNetArticle> {
+public class StarWars extends DataSource {
+
+    private static final String title = "SW Official";
+    private static final int logoId = R.drawable.sw_official;
+    private static final List<SourcePage> pages = Arrays.asList(new NewsPage());
+
+    public StarWars(){
+        super(title, logoId, pages);
+    }
 
     @Override
+    public String[] getPageNames() {
+        return new String[0];
+    }
+
+
+    /**@Override
     public String getUrl() {
         return "https://www.starwars.com/news";
     }
@@ -44,7 +55,7 @@ public class StarWarsNews implements IDataSource<HoloNetArticle> {
     @Override
     public List<HoloNetArticle> parseDocument(Document doc, int sectionId) {
 
-        List<HoloNetArticle> results = new ArrayList<>();
+        /**List<HoloNetArticle> results = new ArrayList<>();
         Elements elements = doc.select("article");
 
         HoloNetArticle curItem;
@@ -123,6 +134,6 @@ public class StarWarsNews implements IDataSource<HoloNetArticle> {
     }
     public static String makeAuthor(String name){
         return "by: " + name;
-    }
+    }**/
 
 }

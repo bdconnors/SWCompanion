@@ -10,10 +10,11 @@ import androidx.fragment.app.FragmentManager;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
 import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
-public class HoloNetHomeAdapter extends GridListAdapter<IDataSource<HoloNetArticle>> {
+public class HoloNetHomeAdapter extends GridListAdapter<DataSource> {
 
     private final Fragment[] fragments;
     public HoloNetHomeAdapter(Context context, Fragment[] fragments){
@@ -24,7 +25,7 @@ public class HoloNetHomeAdapter extends GridListAdapter<IDataSource<HoloNetArtic
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
-        IDataSource<HoloNetArticle> source = getItem(position);
+        DataSource source = getItem(position);
         ViewHolder viewHolder;
         if(view == null){
             view = inflateView(viewGroup);

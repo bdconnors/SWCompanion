@@ -17,10 +17,11 @@ import org.jetbrains.annotations.NotNull;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.WebViewActivity;
+import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.RecyclerListAdapter;
 
-public class HoloNetListAdapter extends RecyclerListAdapter<HoloNetArticle> implements View.OnClickListener {
+public class HoloNetListAdapter extends RecyclerListAdapter<Article> implements View.OnClickListener {
 
     public HoloNetListAdapter(Activity activity) {
         super(activity, R.layout.news_list_item);
@@ -60,7 +61,7 @@ public class HoloNetListAdapter extends RecyclerListAdapter<HoloNetArticle> impl
     public void onClick(View view) {
 
         int position = (int) view.getTag();
-        HoloNetArticle item = getItem(position);
+        HoloNetArticle item = (HoloNetArticle) getItem(position);
 
         Intent intent = new Intent(activity, WebViewActivity.class);
         intent.putExtra(WebViewActivity.URL_EXTRA, item.url);

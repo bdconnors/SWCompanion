@@ -15,8 +15,8 @@
         android:layout_below="@id/toolbar_main"
         android:layout_above="@id/bottom_nav"
     />
-   <!--
-       <androidx.fragment.app.FragmentContainerView
+
+       <!--<androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

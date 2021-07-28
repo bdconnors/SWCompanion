@@ -1,24 +1,28 @@
-package edu.rit.connors.brandon.swcompanion.network.source;
+package edu.rit.connors.brandon.swcompanion.network.source.wookieepedia;
 
-import android.util.Log;
-
-import org.jetbrains.annotations.NotNull;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.R;
-import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
+import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
 
-public class Wookieepedia implements IDataSource<ArchiveArticle> {
+public class Wookieepedia extends DataSource {
 
+    private static final String title = "Wookieepedia";
+    private static final int logoId = R.drawable.wookieepedia;
+    private static final List<SourcePage> pages = Arrays.asList(new TrendingPage(),new PopularPage());
 
-    public Wookieepedia(){ }
+    public Wookieepedia(){
+        super(title, logoId, pages);
+    }
 
     @Override
+    public String[] getPageNames() {
+        return new String[0];
+    }
+
+/**@Override
     public String getUrl() {
         return "https://starwars.fandom.com/wiki/Main_Page";
     }
@@ -137,5 +141,5 @@ public class Wookieepedia implements IDataSource<ArchiveArticle> {
     }
     public static String getPageURL(String itemHref){
         return "https://starwars.fandom.com" + itemHref;
-    }
+    }**/
 }

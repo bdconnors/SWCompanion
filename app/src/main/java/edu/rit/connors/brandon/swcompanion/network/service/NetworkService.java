@@ -10,7 +10,9 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.util.List;
 
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
 import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
+import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkList;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -21,38 +23,13 @@ import okhttp3.Response;
 public abstract class NetworkService<T> implements INetworkService<T> {
 
     private final OkHttpClient client = new OkHttpClient();
-    private final IDataSource<T> dataSource;
+    private final DataSource dataSource;
 
-    public NetworkService(IDataSource<T> dataSource){
+    public NetworkService(DataSource dataSource){
         this.dataSource = dataSource;
+        Log.d("NetworkService", "DataSource: "+dataSource.getTitle());
     }
 
-    public void load(NetworkList<T> listView, int sectionId){
-        listView.setLoading(true);
-        Activity activity = listView.getActivity();
-        Log.d("NetworkService", "load: " + dataSource.getUrl());
-        Request request = buildRequest(dataSource.getUrl(), dataSource.mobileRequired(sectionId));
-        executeRequest(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                listView.setLoading(false);
-                call.cancel();
-            }
-
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String html = response.body().string();
-                Document doc = Jsoup.parse(html);
-                List<T> results = getDataSource().parseDocument(doc, sectionId);
-                Log.d("NetworkService", "onResponse: " + results.size());
-                activity.runOnUiThread(()->{
-                    listView.getAdapter().setItems(results);
-                    listView.setLoading(false);
-
-                });
-            }
-        },request);
-    }
     public void executeRequest(Callback callback, Request request){
         Call call = client.newCall(request);
         call.enqueue(callback);
@@ -74,7 +51,7 @@ public abstract class NetworkService<T> implements INetworkService<T> {
         return client;
     }
 
-    public IDataSource<T> getDataSource() {
+    public DataSource getDataSource() {
         return dataSource;
     }
 }

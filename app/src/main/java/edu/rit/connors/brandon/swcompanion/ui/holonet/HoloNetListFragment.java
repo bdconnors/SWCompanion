@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
 import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkRecyclerFragment;
 
-public class HoloNetListFragment extends NetworkRecyclerFragment<HoloNetArticle> {
+public class HoloNetListFragment extends NetworkRecyclerFragment<Article> {
 
-    public final int sectionId;
-    public HoloNetListFragment(INetworkService<HoloNetArticle> service, int sectionId) {
+    public final int pageId;
+    public HoloNetListFragment(INetworkService<Article> service, int pageId) {
         super(service);
-        this.sectionId = sectionId;
+        this.pageId = pageId;
     }
 
     @Nullable
@@ -35,7 +36,7 @@ public class HoloNetListFragment extends NetworkRecyclerFragment<HoloNetArticle>
     }
 
     public void load() {
-        getService().load(this, sectionId);
+        getService().load(this, pageId);
     }
 
     @Override

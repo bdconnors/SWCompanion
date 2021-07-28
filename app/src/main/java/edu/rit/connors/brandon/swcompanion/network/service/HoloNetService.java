@@ -1,10 +1,54 @@
 package edu.rit.connors.brandon.swcompanion.network.service;
 
-import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
-import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
+import android.app.Activity;
+import android.util.Log;
 
-public class HoloNetService extends NetworkService<HoloNetArticle> {
-    public HoloNetService(IDataSource<HoloNetArticle> dataSource) {
+import org.jetbrains.annotations.NotNull;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+import java.util.List;
+
+import edu.rit.connors.brandon.swcompanion.domain.model.Article;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
+import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkList;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Request;
+import okhttp3.Response;
+
+public class HoloNetService extends NetworkService<Article> {
+
+    public HoloNetService(DataSource dataSource) {
         super(dataSource);
+    }
+
+    public void load(NetworkList<Article> listView, int pageId){
+        listView.setLoading(true);
+        Activity activity = listView.getActivity();
+        SourcePage page = getDataSource().getPage(pageId);
+        Request request = buildRequest(page.getUrl(), page.isMobileRequired());
+        executeRequest(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                listView.setLoading(false);
+                call.cancel();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String html = response.body().string();
+                Document doc = Jsoup.parse(html);
+                List<Article> results = page.parse(doc);
+                Log.d("NetworkService", "onResponse: " + results.size());
+                activity.runOnUiThread(()->{
+                    listView.getAdapter().setItems(results);
+                    listView.setLoading(false);
+
+                });
+            }
+        },request);
     }
 }

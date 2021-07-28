@@ -1,24 +1,24 @@
-package edu.rit.connors.brandon.swcompanion.ui.archive.fragment;
+package edu.rit.connors.brandon.swcompanion.ui.sources;
 
 import androidx.fragment.app.Fragment;
 
-import edu.rit.connors.brandon.swcompanion.network.source.Wookieepedia;
+import edu.rit.connors.brandon.swcompanion.network.source.wookieepedia.Wookieepedia;
 import edu.rit.connors.brandon.swcompanion.network.service.ArchiveService;
 import edu.rit.connors.brandon.swcompanion.ui.archive.ArchiveGridFragment;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.TabPagerFragment;
 
-public class WookieepediaFragment extends TabPagerFragment {
+public class WookieepediaArchive extends TabPagerFragment {
 
+    private static final String[] tabTitles = {"Trending","Popular"};
     private static final Wookieepedia source = new Wookieepedia();
     private static final ArchiveService service = new ArchiveService(source);
-    private static final String[] tabs = source.getSectionTitles();
-
-    private static final Fragment[] fragments = new Fragment[]{
-            new ArchiveGridFragment(service,0),
+    private static final Fragment[] tabViews = new Fragment[]{
+            new ArchiveGridFragment(service, 0),
             new ArchiveGridFragment(service, 1)
     };
 
-    public WookieepediaFragment() {
-        super(tabs,fragments);
+
+    public WookieepediaArchive() {
+        super(tabTitles, tabViews);
     }
 }

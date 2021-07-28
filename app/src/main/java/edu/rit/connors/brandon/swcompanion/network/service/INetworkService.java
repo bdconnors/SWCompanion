@@ -7,5 +7,5 @@ import okhttp3.Request;
 public interface INetworkService<T>{
     Request buildRequest(String url, boolean mobile);
     void executeRequest(Callback callback, Request request);
-    void load(NetworkList<T> listView, int sectionId);
+    void load(NetworkList<T> listView, int pageId);
 }
