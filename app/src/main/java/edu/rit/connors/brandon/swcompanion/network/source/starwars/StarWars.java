@@ -11,7 +11,7 @@ public class StarWars extends DataSource {
 
     private static final String title = "SW Official";
     private static final int logoId = R.drawable.sw_official;
-    private static final List<SourcePage> pages = Arrays.asList(new NewsPage());
+    private static final List<SourcePage> pages = Arrays.asList(new HoloNetLatestPage(), new ArchiveLatestPage());
 
     public StarWars(){
         super(title, logoId, pages);
@@ -19,7 +19,7 @@ public class StarWars extends DataSource {
 
     @Override
     public String[] getPageNames() {
-        return new String[0];
+        return new String[]{"Latest"};
     }
 
 

@@ -15,7 +15,9 @@ import java.util.ArrayList;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
+import edu.rit.connors.brandon.swcompanion.network.source.starwars.StarWars;
 import edu.rit.connors.brandon.swcompanion.network.source.wookieepedia.Wookieepedia;
+import edu.rit.connors.brandon.swcompanion.ui.sources.SWOfficialArchive;
 import edu.rit.connors.brandon.swcompanion.ui.sources.WookieepediaArchive;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
@@ -28,13 +30,16 @@ public class ArchiveHomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.grid_list_fragment, container, false);
         fragments = new Fragment[]{
-                new WookieepediaArchive()
+                new WookieepediaArchive(),
+                new SWOfficialArchive()
         };
         gridView = view.findViewById(R.id.grid_view);
         adapter = new ArchiveHomeAdapter(getActivity(), fragments);
         gridView.setAdapter(adapter);
         adapter.setItems(new ArrayList<DataSource>(){{
-            add(new Wookieepedia());}});
+            add(new Wookieepedia());
+            add(new StarWars());
+        }});
         return view;
     }
 }

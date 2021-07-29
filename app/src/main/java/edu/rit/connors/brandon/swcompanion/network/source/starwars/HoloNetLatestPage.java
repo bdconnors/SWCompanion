@@ -13,9 +13,9 @@ import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
 import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
 
-public class NewsPage extends SourcePage{
+public class HoloNetLatestPage extends SourcePage{
 
-    public NewsPage(){
+    public HoloNetLatestPage(){
         super(0, "SW Official","https://www.starwars.com/news");
     }
 

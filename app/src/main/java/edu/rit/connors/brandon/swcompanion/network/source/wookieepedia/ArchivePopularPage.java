@@ -12,9 +12,9 @@ import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
 
-public class PopularPage extends SourcePage {
+public class ArchivePopularPage extends SourcePage {
 
-    public PopularPage(){
+    public ArchivePopularPage(){
         super(1, "Popular", "https://starwars.fandom.com/wiki/Main_Page", true);
     }
 
