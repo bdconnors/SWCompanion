@@ -5,6 +5,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.IListAdapter;
 import edu.rit.connors.brandon.swcompanion.ui.util.IRefreshable;
 
@@ -12,10 +13,10 @@ public abstract class NetworkList<T>extends Fragment implements IRefreshable {
 
     protected SwipeRefreshLayout refreshLayout;
     protected IListAdapter<T> adapter;
-    protected final INetworkService<T> service;
+    protected final DataSource source;
 
-    public NetworkList(INetworkService<T> service){
-        this.service = service;
+    public NetworkList(DataSource source){
+        this.source = source;
     }
 
     public SwipeRefreshLayout getRefreshLayout() {
@@ -28,10 +29,6 @@ public abstract class NetworkList<T>extends Fragment implements IRefreshable {
 
     public void setAdapter(IListAdapter<T> adapter) {
         this.adapter = adapter;
-    }
-
-    public INetworkService<T> getService() {
-        return service;
     }
 
     public void setLoading(boolean isLoading){

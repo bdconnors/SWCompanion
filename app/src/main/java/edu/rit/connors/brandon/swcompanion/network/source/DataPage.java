@@ -1,33 +1,24 @@
 package edu.rit.connors.brandon.swcompanion.network.source;
 
-import android.util.Log;
-
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
-import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
 
-public abstract class SourcePage implements ISourcePage {
-    private final int id;
+public abstract class DataPage implements IDataPage {
     private final String name;
     private final String url;
     private final boolean mobileRequired;
 
 
-    public SourcePage(int id, String name, String url){
-        this.id = id;
+    public DataPage(String name, String url){
         this.name = name;
         this.url = url;
         this.mobileRequired = false;
     }
-    public SourcePage(int id, String name, String url, boolean mobileRequired) {
-        this.id = id;
+    public DataPage(String name, String url, boolean mobileRequired) {
         this.name = name;
         this.url = url;
         this.mobileRequired = mobileRequired;
@@ -37,9 +28,6 @@ public abstract class SourcePage implements ISourcePage {
 
     public abstract List<Article> parse(Document document);
 
-    public int getId() {
-        return id;
-    }
 
     public String getUrl() {
         return url;

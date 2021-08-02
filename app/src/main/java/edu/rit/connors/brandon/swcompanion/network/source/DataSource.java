@@ -2,19 +2,18 @@ package edu.rit.connors.brandon.swcompanion.network.source;
 
 import android.util.Log;
 
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public abstract class DataSource implements IDataSource {
+
+
     private final String title;
     private final int logoId;
-    private final List<SourcePage> pages;
+    private final Map<DataPageType,DataPage> pages;
 
 
-    public DataSource(String title, int logoId, List<SourcePage> pages){
+    public DataSource(String title, int logoId, Map<DataPageType,DataPage> pages){
         this.title = title;
         this.logoId = logoId;
         this.pages = pages;
@@ -32,12 +31,12 @@ public abstract class DataSource implements IDataSource {
     }
 
     @Override
-    public List<SourcePage> getPages() {
+    public Map<DataPageType,DataPage> getPages() {
         return pages;
     }
-
-    public SourcePage getPage(int id){
-        return pages.get(id);
+    @Override
+    public DataPage getPage(DataPageType type){
+        return pages.get(type);
     }
 
     /**@Override

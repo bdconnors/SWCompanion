@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.IListAdapter;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.RecyclerListAdapter;
 
@@ -20,8 +21,8 @@ public abstract class NetworkRecyclerFragment<T> extends NetworkList<T>{
     protected RecyclerView recyclerView;
     protected RecyclerView.LayoutManager layoutManager;
 
-    public NetworkRecyclerFragment(INetworkService<T> service) {
-        super(service);
+    public NetworkRecyclerFragment(DataSource source) {
+        super(source);
     }
 
     @Nullable

@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.IListAdapter;
 import edu.rit.connors.brandon.swcompanion.ui.util.adapter.GridListAdapter;
 
@@ -20,8 +21,8 @@ public abstract class NetworkGridFragment<T> extends NetworkList<T> {
     protected GridView gridView;
     protected GridListAdapter<T> adapter;
 
-    public NetworkGridFragment(INetworkService<T> service) {
-        super(service);
+    public NetworkGridFragment(DataSource source) {
+        super(source);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package edu.rit.connors.brandon.swcompanion.network.source.starwars;
 
-import android.util.Log;
-
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -11,12 +9,12 @@ import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
-import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.network.source.DataPage;
 
-public class HoloNetLatestPage extends SourcePage{
+public class HoloNetPage extends DataPage {
 
-    public HoloNetLatestPage(){
-        super(0, "SW Official","https://www.starwars.com/news");
+    public HoloNetPage(){
+        super("SW Official","https://www.starwars.com/news");
     }
 
 

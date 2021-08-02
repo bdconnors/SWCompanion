@@ -11,11 +11,11 @@ import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
-import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.network.source.DataPage;
 
-public class ArchiveLatestPage extends SourcePage {
-    public ArchiveLatestPage() {
-        super(1,"Latest", "https://www.starwars.com/databank");
+public class ArchivePage extends DataPage {
+    public ArchivePage() {
+        super("Latest", "https://www.starwars.com/databank");
     }
 
     @Override

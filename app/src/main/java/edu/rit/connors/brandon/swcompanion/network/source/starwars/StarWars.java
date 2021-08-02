@@ -1,25 +1,23 @@
 package edu.rit.connors.brandon.swcompanion.network.source.starwars;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.rit.connors.brandon.swcompanion.R;
 import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
-import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.network.source.DataPage;
 
 public class StarWars extends DataSource {
 
     private static final String title = "SW Official";
     private static final int logoId = R.drawable.sw_official;
-    private static final List<SourcePage> pages = Arrays.asList(new HoloNetLatestPage(), new ArchiveLatestPage());
+    private static final Map<DataPageType,DataPage> pages = new HashMap<DataPageType,DataPage>(){{
+        put(DataPageType.HOLO_NET,new HoloNetPage());
+        put(DataPageType.ARCHIVE, new ArchivePage());
+    }};
 
     public StarWars(){
         super(title, logoId, pages);
-    }
-
-    @Override
-    public String[] getPageNames() {
-        return new String[]{"Latest"};
     }
 
 

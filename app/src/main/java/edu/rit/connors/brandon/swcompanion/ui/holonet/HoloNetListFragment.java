@@ -10,15 +10,16 @@ import androidx.annotation.Nullable;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.domain.model.HoloNetArticle;
+import edu.rit.connors.brandon.swcompanion.network.service.HoloNetService;
 import edu.rit.connors.brandon.swcompanion.network.service.INetworkService;
+import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkRecyclerFragment;
 
 public class HoloNetListFragment extends NetworkRecyclerFragment<Article> {
 
-    public final int pageId;
-    public HoloNetListFragment(INetworkService<Article> service, int pageId) {
-        super(service);
-        this.pageId = pageId;
+    public static final HoloNetService service = new HoloNetService();
+    public HoloNetListFragment(DataSource source) {
+        super(source);
     }
 
     @Nullable
@@ -36,7 +37,7 @@ public class HoloNetListFragment extends NetworkRecyclerFragment<Article> {
     }
 
     public void load() {
-        getService().load(this, pageId);
+        service.load(this, source);
     }
 
     @Override

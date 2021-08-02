@@ -10,12 +10,12 @@ import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
-import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.network.source.DataPage;
 
-public class ArchivePopularPage extends SourcePage {
+public class ArchivePopularPage extends DataPage {
 
     public ArchivePopularPage(){
-        super(1, "Popular", "https://starwars.fandom.com/wiki/Main_Page", true);
+        super("Popular", "https://starwars.fandom.com/wiki/Main_Page", true);
     }
 
     @Override

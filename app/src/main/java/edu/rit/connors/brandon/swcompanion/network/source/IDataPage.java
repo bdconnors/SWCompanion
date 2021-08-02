@@ -8,10 +8,9 @@ import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 
-public interface ISourcePage {
+public interface IDataPage {
     Article parseElement(Element element);
     List<Article> parse(Document document);
-    int getId();
     String getUrl();
     boolean isMobileRequired();
     String getName();

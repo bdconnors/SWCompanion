@@ -12,7 +12,8 @@ import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
 import edu.rit.connors.brandon.swcompanion.network.source.DataSource;
-import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.network.source.DataPage;
+import edu.rit.connors.brandon.swcompanion.network.source.IDataSource;
 import edu.rit.connors.brandon.swcompanion.ui.util.fragment.NetworkList;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -21,14 +22,11 @@ import okhttp3.Response;
 
 public class HoloNetService extends NetworkService<Article> {
 
-    public HoloNetService(DataSource dataSource) {
-        super(dataSource);
-    }
 
-    public void load(NetworkList<Article> listView, int pageId){
+    public void load(NetworkList<Article> listView, DataSource dataSource){
         listView.setLoading(true);
         Activity activity = listView.getActivity();
-        SourcePage page = getDataSource().getPage(pageId);
+        DataPage page = dataSource.getPage(IDataSource.DataPageType.HOLO_NET);
         Request request = buildRequest(page.getUrl(), page.isMobileRequired());
         executeRequest(new Callback() {
             @Override

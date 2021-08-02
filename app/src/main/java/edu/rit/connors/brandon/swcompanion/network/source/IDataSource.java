@@ -2,14 +2,15 @@ package edu.rit.connors.brandon.swcompanion.network.source;
 
 
 
-import org.jsoup.nodes.Document;
-
 import java.util.List;
+import java.util.Map;
 
 public interface IDataSource {
+    enum DataPageType {
+        ARCHIVE,HOLO_NET
+    }
     int getLogoId();
     String getTitle();
-    List<SourcePage> getPages();
-    SourcePage getPage(int id);
-    String[] getPageNames();
+    Map<DataPageType,DataPage> getPages();
+    DataPage getPage(DataPageType type);
 }

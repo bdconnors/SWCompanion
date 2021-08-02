@@ -1,7 +1,5 @@
 package edu.rit.connors.brandon.swcompanion.network.source.wookieepedia;
 
-import android.util.Log;
-
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -11,12 +9,12 @@ import java.util.List;
 
 import edu.rit.connors.brandon.swcompanion.domain.model.ArchiveArticle;
 import edu.rit.connors.brandon.swcompanion.domain.model.Article;
-import edu.rit.connors.brandon.swcompanion.network.source.SourcePage;
+import edu.rit.connors.brandon.swcompanion.network.source.DataPage;
 
-public class SearchPage extends SourcePage {
+public class SearchPage extends DataPage {
 
     public SearchPage() {
-        super(2, "Search", "https://starwars.fandom.com/wiki/Special:Search?query=");
+        super("Search", "https://starwars.fandom.com/wiki/Special:Search?query=");
     }
 
     @Override
